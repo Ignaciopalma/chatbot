@@ -12,7 +12,7 @@ class InputBox extends Component {
     };
 
     componentDidMount() {
-        const uri = "http://localhost:8080/";
+        const uri = "/send-message";
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
 
@@ -25,6 +25,7 @@ class InputBox extends Component {
 
                 axios.post(uri, message)
                     .then(response => {
+                            console.log('RESPONSE: ', response)
                             this.props.post(response.data);
                             this.setState({content: ''});
                         }
