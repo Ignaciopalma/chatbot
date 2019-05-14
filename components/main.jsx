@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class Chatbot extends React.Component {
 	render() {
 		return (
-			<h1>Chatbot app!!</h1>
+			<h1>Chatbot apps!!</h1>
 		)
 	}
 }

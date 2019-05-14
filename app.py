@@ -16,10 +16,6 @@ loaded_model = model_from_json(loaded_model_json)
 loaded_model.load_weights("/Users/ignaciopalma/PycharmProjects/session_6/models/mlp-model.h5")
 print("Loaded model from disk")
 
-user_message = nlp("hello world").vector
-print("shape: {}".format(user_message.shape))
-
-
 # evaluate loaded model on test data
 loaded_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 print('model compiled')
