@@ -1,4 +1,5 @@
 import os
+import random
 from flask import Flask
 from flask import send_from_directory, jsonify, request
 from keras.models import model_from_json
@@ -24,10 +25,18 @@ print("shape: {}".format(user_message.shape))
 loaded_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 print('model compiled')
 
-prediction = loaded_model.predict_classes(np.array([user_message]))
+# prediction = loaded_model.predict_classes(np.array([user_message]))
 
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)))
 app = Flask(__name__)
+
+responses = {
+	"greetings": [
+		"Hi Human",
+		"Hi how are you?",
+		"hi there"
+	]
+}
 
 @app.route("/")
 def hello():
@@ -44,4 +53,8 @@ def sent_message():
 	labels = ['greetings', 'commands', 'factoid', 'weather', 'book']
 	print("prediction {}".format(labels[prediction]))
 
-	return jsonify({"content": "Hi Human", "type": "received"})
+	predicted_label = labels[prediction]
+	possible_responses = responses[predicted_label]
+	random_index = random.randint(0, len(responses[predicted_label]) - 1)
+
+	return jsonify({"content": possible_responses[random_index], "type": "received"})
