@@ -3,9 +3,9 @@ import React from "react";
 const StatsBox = (props) => {
 
     return (
-        <div className="StatsBox">
-            <div className="StatsBoxTitle">Stats</div>
-            <div className="StatsLits">
+        <div className="statsBox">
+            <div className="titleBox">Stats</div>
+            <div className="statContainer">
                 <Stats content={1}/>
                 <Stats content={2}/>
             </div>
@@ -15,7 +15,7 @@ const StatsBox = (props) => {
 
 const Stats = (props) => {
     return (
-        <div className="Stat"> Stat {props.content}</div>
+        <div className="statItem"> Stat {props.content}</div>
     );
 };
 

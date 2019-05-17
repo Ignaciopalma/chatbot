@@ -13,23 +13,26 @@ class InputBox extends Component {
 
     componentDidMount() {
         const uri = "/send-message";
+
+        function addMessage() {
+            const message = {
+                content: this.state.content,
+                type: 'sent'
+            };
+
+            this.props.post(message);
+
+            axios.post(uri, message)
+                .then(response => {
+                        this.props.post(response.data);
+                        this.setState({content: ''});
+                    }
+                );
+        }
+
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-
-                const message = {
-                    content: this.state.content,
-                    type: 'sent'
-                };
-
-                this.props.post(message);
-
-                axios.post(uri, message)
-                    .then(response => {
-                            console.log('RESPONSE: ', response)
-                            this.props.post(response.data);
-                            this.setState({content: ''});
-                        }
-                    );
+                addMessage.call(this);
             }
         }, false);
     }

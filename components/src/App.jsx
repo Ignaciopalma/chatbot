@@ -16,12 +16,14 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1> BalboApp </h1>
+                <header className="titleBox"> BalboApp</header>
                 <div className="App">
                     <StatsBox/>
-                    <div>
-                        <MessageBox/>
-                        <InputBox post={this.onHandlerPost}/>
+                    <div className="wrapper">
+                        <div className="chatBox">
+                            <MessageBox/>
+                            <InputBox post={this.onHandlerPost}/>
+                        </div>
                     </div>
                 </div>
             </div>

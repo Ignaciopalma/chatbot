@@ -1,65 +1,147 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
 .App {
-    display: flex;
-    justify-content: space-around;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 20px;
     margin: 20px;
 }
 
-.StatsBox {
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-    border: 1px solid #707070;
-    box-shadow: 1px 0 1px 1px #707070;
+.wrapper {
+    width: 60%;
+    margin: 5rem auto;
 }
 
-.StatsBoxTitle {
-    display: flex;
-    background-color: #D0DE6E;
+.chatBox {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
 }
 
-.Stat {
-    display: flex;
+.titleBox {
+    background-color: #04bf8a;
+    font-size: 2rem;
+    color: #ffffff;
+    font-weight: bolder;
+    text-align: center;
+    padding: 1.5rem 0;
 }
 
-.MessageBox {
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-    overflow: scroll;
-    border: 1px solid #707070;
-    box-shadow: 1px 0 1px 1px #707070;
-}
-
-.MessageList {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 100%;
-    overflow: auto;
-}
-
-.sent {
-    align-self: flex-end;
-    background: #BCC95A;
-    height: auto;
-    padding: 6px;
-}
-
-.received {
-    align-self: flex-start;
-    background: #E9E9E9;
-    height: auto;
-    padding: 6px;
+.messageBox {
+    padding: 0 2rem;
+    height: 350px;
+    overflow-y: scroll;
 }
 
 .message {
-    padding: 8px 0;
+    background-color: #fafafa;
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    list-style: none;
+    width: fit-content;
+    word-break: break-word;
+    transition: 0.5s;
+    position: relative;
+    box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.message.received {
+    animation: slideFromLeft 0.5s ease-out;
+}
+
+.received:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border: 10px solid #fafafa;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.message:hover {
+    transform: scale(1.1);
+    box-shadow: -3px 8px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message.sent {
+    background-color: #5ef29f;
+    margin-left: auto;
+    right: 0;
+    animation: slideFromRight 0.5s ease-out;
+}
+
+.message.sent:before {
+    content: "";
+    width: 0;
+    height: 0;
+    transform: translateX(50%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 10px solid #5ef29f;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+
+@keyframes slideFromRight {
+    0% {
+        right: -100%;
+    }
+    100% {
+        right: 0;
+    }
+}
+
+@keyframes slideFromLeft {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 0;
+    }
 }
 
 .InputBox {
-    width: 98%;
-    border: 1px solid #707070;
-    box-shadow: 1px 1px 0 1px #707070;
+    display: block;
+    width: 90%;
+    border-radius: 20px;
+    margin: 0 auto 1rem;
+    padding: 1rem;
+}
+
+.statsBox {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    background-image: url("https://www.transparenttextures.com/patterns/clean-gray-paper.png");
+}
+
+.statItem {
+    background-color: #fafafa;
+    margin: 1rem 0;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    list-style: none;
+    width: fit-content;
+    word-break: break-word;
+    transition: 0.5s;
+    position: relative;
+    box-shadow: -1px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.statContainer {
+    padding: 0 2rem;
+    height: 350px;
 }
